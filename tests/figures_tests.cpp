@@ -180,3 +180,67 @@ TEST(RectangleTest, ConvertsFractionalSidesToString)
     EXPECT_EQ(Rectangle(1.23456789, 1.23456789).to_string(), "rectangle 1.23457 1.23457");
     EXPECT_EQ(Rectangle(123.456789, 123.456789).to_string(), "rectangle 123.457 123.457");
 }
+
+TEST(TriangleTest, ClonesCorrectly)
+{
+    Triangle original(3, 4, 5);
+    auto copy = original.clone();
+
+    ASSERT_NE(copy, nullptr);
+    EXPECT_NE(copy.get(), &original);
+    EXPECT_EQ(copy->perimeter(), original.perimeter());
+    EXPECT_EQ(copy->to_string(), original.to_string());
+}
+TEST(CircleTest, ClonesCorrectly)
+{
+    Circle original(3);
+    auto copy = original.clone();
+
+    ASSERT_NE(copy, nullptr);
+    EXPECT_NE(copy.get(), &original);
+    EXPECT_EQ(copy->perimeter(), original.perimeter());
+    EXPECT_EQ(copy->to_string(), original.to_string());
+}
+TEST(RectangleTest, ClonesCorrectly)
+{
+    Rectangle original(3, 4);
+    auto copy = original.clone();
+
+    ASSERT_NE(copy, nullptr);
+    EXPECT_NE(copy.get(), &original);
+    EXPECT_EQ(copy->perimeter(), original.perimeter());
+    EXPECT_EQ(copy->to_string(), original.to_string());
+}
+
+TEST(FigureTest, PolymorphicCloning)
+{
+    Triangle originalT(3, 4, 5);
+    const Figure &figureT = originalT;
+    auto copyT = figureT.clone();
+
+    ASSERT_NE(copyT, nullptr);
+    EXPECT_NE(copyT.get(), &originalT);
+    EXPECT_NE(dynamic_cast<Triangle*>(copyT.get()), nullptr);
+    EXPECT_EQ(copyT->perimeter(), originalT.perimeter());
+    EXPECT_EQ(copyT->to_string(), originalT.to_string());
+
+    Circle originalC(3);
+    const Figure &figureC = originalC;
+    auto copyC = figureC.clone();
+
+    ASSERT_NE(copyC, nullptr);
+    EXPECT_NE(copyC.get(), &originalC);
+    EXPECT_NE(dynamic_cast<Circle*>(copyC.get()), nullptr);
+    EXPECT_EQ(copyC->perimeter(), originalC.perimeter());
+    EXPECT_EQ(copyC->to_string(), originalC.to_string());
+
+    Rectangle originalR(3, 4);
+    const Figure &figureR = originalR;
+    auto copyR = figureR.clone();
+
+    ASSERT_NE(copyR, nullptr);
+    EXPECT_NE(copyR.get(), &originalR);
+    EXPECT_NE(dynamic_cast<Rectangle*>(copyR.get()), nullptr);
+    EXPECT_EQ(copyR->perimeter(), originalR.perimeter());
+    EXPECT_EQ(copyR->to_string(), originalR.to_string());
+}

@@ -23,6 +23,9 @@ Triangle::Triangle(double a, double b, double c) : a_(a), b_(b), c_(c)
     if (willBeOverflow)
         throw std::overflow_error("Triangle perimeter exceeds maximum double value.");
 }
+std::unique_ptr<Figure> Triangle::clone() const {
+    return std::make_unique<Triangle>(*this);
+}
 double Triangle::perimeter() const
 {
     return a_ + b_ + c_;
@@ -45,6 +48,9 @@ Circle::Circle(double r) : r_(r)
     if (willBeOverflow)
         throw std::overflow_error("Circle perimeter exceeds maximum double value.");
 }
+std::unique_ptr<Figure> Circle::clone() const {
+    return std::make_unique<Circle>(*this);
+}
 double Circle::perimeter() const
 {
     return 2 * std::numbers::pi * r_;
@@ -66,6 +72,9 @@ Rectangle::Rectangle(double a, double b) : a_(a), b_(b)
     bool willBeOverflow = !std::isfinite(2 * (a_ + b));
     if (willBeOverflow)
         throw std::overflow_error("Rectangle perimeter exceeds maximum double value.");
+}
+std::unique_ptr<Figure> Rectangle::clone() const {
+    return std::make_unique<Rectangle>(*this);
 }
 double Rectangle::perimeter() const
 {
