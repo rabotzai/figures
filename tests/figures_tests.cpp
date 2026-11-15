@@ -124,3 +124,59 @@ TEST(RectangleTest, CalculatesPerimeter)
     Rectangle rect(3.0, 4.0);
     EXPECT_DOUBLE_EQ(rect.perimeter(), 14.0);
 }
+
+TEST(TriangleTest, ConvertsToString)
+{
+    Triangle tri(3.0, 4.0, 5.0);
+    EXPECT_EQ(tri.to_string(), "triangle 3 4 5");
+}
+TEST(CircleTest, ConvertsToString)
+{
+    Circle circ(3.0);
+    EXPECT_EQ(circ.to_string(), "circle 3");
+}
+TEST(RectangleTest, ConvertsToString)
+{
+    Rectangle rect(3.0, 4.0);
+    EXPECT_EQ(rect.to_string(), "rectangle 3 4");
+}
+
+TEST(FigureTest, PolymorphicToString)
+{
+    Triangle tri(3.0, 4.0, 5.0);
+    Circle circ(3.0);
+    Rectangle rect(3.0, 4.0);
+
+    const Figure &figureT = tri;
+    const Figure &figureC = circ;
+    const Figure &figureR = rect;
+
+    EXPECT_EQ(figureT.to_string(), "triangle 3 4 5");
+    EXPECT_EQ(figureC.to_string(), "circle 3");
+    EXPECT_EQ(figureR.to_string(), "rectangle 3 4");
+}
+
+TEST(TriangleTest, ConvertsFractionalSidesToString)
+{
+
+    EXPECT_EQ(Triangle(2.5, 2.5, 2.5).to_string(), "triangle 2.5 2.5 2.5");
+    EXPECT_EQ(Triangle(3.14159, 3.14159, 3.14159).to_string(), "triangle 3.14159 3.14159 3.14159");
+    EXPECT_EQ(Triangle(1.23456789, 1.23456789, 1.23456789).to_string(), "triangle 1.23457 1.23457 1.23457");
+    EXPECT_EQ(Triangle(123.456789, 123.456789, 123.456789).to_string(), "triangle 123.457 123.457 123.457");
+}
+TEST(CircleTest, ConvertsFractionalRadiusToString)
+{
+
+    EXPECT_EQ(Circle(2.5).to_string(), "circle 2.5");
+    EXPECT_EQ(Circle(3.14159).to_string(), "circle 3.14159");
+    EXPECT_EQ(Circle(1.23456789).to_string(), "circle 1.23457");
+    EXPECT_EQ(Circle(123.456789).to_string(), "circle 123.457");
+}
+TEST(RectangleTest, ConvertsFractionalSidesToString)
+{
+
+    EXPECT_EQ(Rectangle(2.5, 2.5).to_string(), "rectangle 2.5 2.5");
+    EXPECT_EQ(Rectangle(3.14159, 3.14159).to_string(), "rectangle 3.14159 3.14159");
+    EXPECT_EQ(Rectangle(1.23456789, 1.23456789).to_string(), "rectangle 1.23457 1.23457");
+    EXPECT_EQ(Rectangle(123.456789, 123.456789).to_string(), "rectangle 123.457 123.457");
+}

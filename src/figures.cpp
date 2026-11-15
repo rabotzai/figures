@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cmath>
 #include <numbers>
+#include <sstream>
 
 Triangle::Triangle(double a, double b, double c) : a_(a), b_(b), c_(c)
 {
@@ -26,6 +27,13 @@ double Triangle::perimeter() const
 {
     return a_ + b_ + c_;
 }
+std::string Triangle::to_string() const
+{
+    std::ostringstream oss;
+    oss << "triangle " << a_ << " " << b_ << " " << c_;
+
+    return oss.str();
+}
 
 Circle::Circle(double r) : r_(r)
 {
@@ -41,6 +49,13 @@ double Circle::perimeter() const
 {
     return 2 * std::numbers::pi * r_;
 }
+std::string Circle::to_string() const
+{
+    std::ostringstream oss;
+    oss << "circle " << r_;
+
+    return oss.str();
+}
 
 Rectangle::Rectangle(double a, double b) : a_(a), b_(b)
 {
@@ -55,4 +70,11 @@ Rectangle::Rectangle(double a, double b) : a_(a), b_(b)
 double Rectangle::perimeter() const
 {
     return 2 * (a_ + b_);
+}
+std::string Rectangle::to_string() const
+{
+    std::ostringstream oss;
+    oss << "rectangle " << a_ << " " << b_;
+
+    return oss.str();
 }
