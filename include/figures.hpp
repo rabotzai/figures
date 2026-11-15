@@ -5,7 +5,7 @@
 
 class IStringConvertible {
     public:
-        virtual std::string to_string() const = 0;
+        virtual std::string toString() const = 0;
         virtual ~IStringConvertible() = default;
 };
 
@@ -29,7 +29,7 @@ public:
     std::unique_ptr<Figure> clone() const override;
 
     double perimeter() const override;
-    std::string to_string() const override;
+    std::string toString() const override;
 };
 class Circle : public Figure
 {
@@ -41,7 +41,7 @@ public:
     std::unique_ptr<Figure> clone() const override;
 
     double perimeter() const override;
-    std::string to_string() const override;
+    std::string toString() const override;
 };
 class Rectangle : public Figure
 {
@@ -54,5 +54,5 @@ public:
     std::unique_ptr<Figure> clone() const override;
 
     double perimeter() const override;
-    std::string to_string() const override;
+    std::string toString() const override;
 };

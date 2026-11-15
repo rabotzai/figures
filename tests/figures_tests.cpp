@@ -128,17 +128,17 @@ TEST(RectangleTest, CalculatesPerimeter)
 TEST(TriangleTest, ConvertsToString)
 {
     Triangle tri(3.0, 4.0, 5.0);
-    EXPECT_EQ(tri.to_string(), "triangle 3 4 5");
+    EXPECT_EQ(tri.toString(), "triangle 3 4 5");
 }
 TEST(CircleTest, ConvertsToString)
 {
     Circle circ(3.0);
-    EXPECT_EQ(circ.to_string(), "circle 3");
+    EXPECT_EQ(circ.toString(), "circle 3");
 }
 TEST(RectangleTest, ConvertsToString)
 {
     Rectangle rect(3.0, 4.0);
-    EXPECT_EQ(rect.to_string(), "rectangle 3 4");
+    EXPECT_EQ(rect.toString(), "rectangle 3 4");
 }
 
 TEST(FigureTest, PolymorphicToString)
@@ -151,34 +151,34 @@ TEST(FigureTest, PolymorphicToString)
     const Figure &figureC = circ;
     const Figure &figureR = rect;
 
-    EXPECT_EQ(figureT.to_string(), "triangle 3 4 5");
-    EXPECT_EQ(figureC.to_string(), "circle 3");
-    EXPECT_EQ(figureR.to_string(), "rectangle 3 4");
+    EXPECT_EQ(figureT.toString(), "triangle 3 4 5");
+    EXPECT_EQ(figureC.toString(), "circle 3");
+    EXPECT_EQ(figureR.toString(), "rectangle 3 4");
 }
 
 TEST(TriangleTest, ConvertsFractionalSidesToString)
 {
 
-    EXPECT_EQ(Triangle(2.5, 2.5, 2.5).to_string(), "triangle 2.5 2.5 2.5");
-    EXPECT_EQ(Triangle(3.14159, 3.14159, 3.14159).to_string(), "triangle 3.14159 3.14159 3.14159");
-    EXPECT_EQ(Triangle(1.23456789, 1.23456789, 1.23456789).to_string(), "triangle 1.23457 1.23457 1.23457");
-    EXPECT_EQ(Triangle(123.456789, 123.456789, 123.456789).to_string(), "triangle 123.457 123.457 123.457");
+    EXPECT_EQ(Triangle(2.5, 2.5, 2.5).toString(), "triangle 2.5 2.5 2.5");
+    EXPECT_EQ(Triangle(3.14159, 3.14159, 3.14159).toString(), "triangle 3.14159 3.14159 3.14159");
+    EXPECT_EQ(Triangle(1.23456789, 1.23456789, 1.23456789).toString(), "triangle 1.23457 1.23457 1.23457");
+    EXPECT_EQ(Triangle(123.456789, 123.456789, 123.456789).toString(), "triangle 123.457 123.457 123.457");
 }
 TEST(CircleTest, ConvertsFractionalRadiusToString)
 {
 
-    EXPECT_EQ(Circle(2.5).to_string(), "circle 2.5");
-    EXPECT_EQ(Circle(3.14159).to_string(), "circle 3.14159");
-    EXPECT_EQ(Circle(1.23456789).to_string(), "circle 1.23457");
-    EXPECT_EQ(Circle(123.456789).to_string(), "circle 123.457");
+    EXPECT_EQ(Circle(2.5).toString(), "circle 2.5");
+    EXPECT_EQ(Circle(3.14159).toString(), "circle 3.14159");
+    EXPECT_EQ(Circle(1.23456789).toString(), "circle 1.23457");
+    EXPECT_EQ(Circle(123.456789).toString(), "circle 123.457");
 }
 TEST(RectangleTest, ConvertsFractionalSidesToString)
 {
 
-    EXPECT_EQ(Rectangle(2.5, 2.5).to_string(), "rectangle 2.5 2.5");
-    EXPECT_EQ(Rectangle(3.14159, 3.14159).to_string(), "rectangle 3.14159 3.14159");
-    EXPECT_EQ(Rectangle(1.23456789, 1.23456789).to_string(), "rectangle 1.23457 1.23457");
-    EXPECT_EQ(Rectangle(123.456789, 123.456789).to_string(), "rectangle 123.457 123.457");
+    EXPECT_EQ(Rectangle(2.5, 2.5).toString(), "rectangle 2.5 2.5");
+    EXPECT_EQ(Rectangle(3.14159, 3.14159).toString(), "rectangle 3.14159 3.14159");
+    EXPECT_EQ(Rectangle(1.23456789, 1.23456789).toString(), "rectangle 1.23457 1.23457");
+    EXPECT_EQ(Rectangle(123.456789, 123.456789).toString(), "rectangle 123.457 123.457");
 }
 
 TEST(TriangleTest, ClonesCorrectly)
@@ -189,7 +189,7 @@ TEST(TriangleTest, ClonesCorrectly)
     ASSERT_NE(copy, nullptr);
     EXPECT_NE(copy.get(), &original);
     EXPECT_EQ(copy->perimeter(), original.perimeter());
-    EXPECT_EQ(copy->to_string(), original.to_string());
+    EXPECT_EQ(copy->toString(), original.toString());
 }
 TEST(CircleTest, ClonesCorrectly)
 {
@@ -199,7 +199,7 @@ TEST(CircleTest, ClonesCorrectly)
     ASSERT_NE(copy, nullptr);
     EXPECT_NE(copy.get(), &original);
     EXPECT_EQ(copy->perimeter(), original.perimeter());
-    EXPECT_EQ(copy->to_string(), original.to_string());
+    EXPECT_EQ(copy->toString(), original.toString());
 }
 TEST(RectangleTest, ClonesCorrectly)
 {
@@ -209,7 +209,7 @@ TEST(RectangleTest, ClonesCorrectly)
     ASSERT_NE(copy, nullptr);
     EXPECT_NE(copy.get(), &original);
     EXPECT_EQ(copy->perimeter(), original.perimeter());
-    EXPECT_EQ(copy->to_string(), original.to_string());
+    EXPECT_EQ(copy->toString(), original.toString());
 }
 
 TEST(FigureTest, PolymorphicCloning)
@@ -222,7 +222,7 @@ TEST(FigureTest, PolymorphicCloning)
     EXPECT_NE(copyT.get(), &originalT);
     EXPECT_NE(dynamic_cast<Triangle*>(copyT.get()), nullptr);
     EXPECT_EQ(copyT->perimeter(), originalT.perimeter());
-    EXPECT_EQ(copyT->to_string(), originalT.to_string());
+    EXPECT_EQ(copyT->toString(), originalT.toString());
 
     Circle originalC(3);
     const Figure &figureC = originalC;
@@ -232,7 +232,7 @@ TEST(FigureTest, PolymorphicCloning)
     EXPECT_NE(copyC.get(), &originalC);
     EXPECT_NE(dynamic_cast<Circle*>(copyC.get()), nullptr);
     EXPECT_EQ(copyC->perimeter(), originalC.perimeter());
-    EXPECT_EQ(copyC->to_string(), originalC.to_string());
+    EXPECT_EQ(copyC->toString(), originalC.toString());
 
     Rectangle originalR(3, 4);
     const Figure &figureR = originalR;
@@ -242,5 +242,5 @@ TEST(FigureTest, PolymorphicCloning)
     EXPECT_NE(copyR.get(), &originalR);
     EXPECT_NE(dynamic_cast<Rectangle*>(copyR.get()), nullptr);
     EXPECT_EQ(copyR->perimeter(), originalR.perimeter());
-    EXPECT_EQ(copyR->to_string(), originalR.to_string());
+    EXPECT_EQ(copyR->toString(), originalR.toString());
 }

@@ -30,7 +30,7 @@ double Triangle::perimeter() const
 {
     return a_ + b_ + c_;
 }
-std::string Triangle::to_string() const
+std::string Triangle::toString() const
 {
     std::ostringstream oss;
     oss << "triangle " << a_ << " " << b_ << " " << c_;
@@ -55,7 +55,7 @@ double Circle::perimeter() const
 {
     return 2 * std::numbers::pi * r_;
 }
-std::string Circle::to_string() const
+std::string Circle::toString() const
 {
     std::ostringstream oss;
     oss << "circle " << r_;
@@ -80,7 +80,7 @@ double Rectangle::perimeter() const
 {
     return 2 * (a_ + b_);
 }
-std::string Rectangle::to_string() const
+std::string Rectangle::toString() const
 {
     std::ostringstream oss;
     oss << "rectangle " << a_ << " " << b_;
