@@ -67,7 +67,7 @@ std::unique_ptr<Figure> StringToFigure::createFrom(const std::string &representa
     throw std::logic_error("Unexpected figure type");
 }
 
-StreamFigureFactory::StreamFigureFactory(std::istream &input) : input_(input) {}
+StreamFigureFactory::StreamFigureFactory(std::istream& input) : input_(input) {}
 std::unique_ptr<Figure> StreamFigureFactory::create()
 {
     std::string representation;

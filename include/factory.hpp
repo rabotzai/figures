@@ -40,4 +40,3 @@ public:
 
     std::unique_ptr<Figure> create() override;
 };
-
