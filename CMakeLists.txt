@@ -8,6 +8,7 @@ add_library(figures_lib STATIC
     src/figures.cpp
     src/factory.cpp
     src/abstract_factory.cpp
+    src/app.cpp
 )
 
 target_compile_features(figures_lib PUBLIC cxx_std_20)
@@ -47,6 +48,7 @@ if(BUILD_TESTING)
         tests/figures_tests.cpp
         tests/factory_tests.cpp
         tests/abstract_factory_tests.cpp
+        tests/app_tests.cpp
     )
 
     target_link_libraries(figures_tests

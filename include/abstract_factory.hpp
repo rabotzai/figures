@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 #include <istream>
+#include <sstream>
 
 enum class TypeFactory
 {
